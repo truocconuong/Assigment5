@@ -1,18 +1,33 @@
 import java.util.ArrayList;
 
 public class Order {
-    public double total;
-    public void Shopping(Ao ao){
-        System.out.println("Bạn vừa mua  "+ao.name +"  Với giá "+ao.money);
-        ao.amount-= 1;
-        this.total+=ao.money;
-    }
-    public void Shopping(Nhan nhan){
-        nhan.amount-=1;
-        this.total+= nhan.money;
-        System.out.println("Bạn vừa mua "+nhan.name + " Với giá" +nhan.money);
-    }
-    public void TongDonHang(){
-        System.out.println(" Tổng số tiến bạn phải thanh toán cho Shop là : "+ this.total);
-    }
+  public double total;
+  ArrayList<String> danhSachSP = new ArrayList<>();
+  public void MuaSP(Ao ao,int soLuong){
+     if(soLuong<ao.amount){
+         danhSachSP.add(ao.name);
+         ao.amount-=soLuong;
+         this.total+= ao.money;
+     }
+   else {
+         System.out.println("Hình như có gì đấy sai sai ");
+     }
+  }
+  public void MuaSP(Nhan nhan,int soLuong){
+      if(soLuong<nhan.amount){
+          danhSachSP.add(nhan.name);
+          nhan.amount-=soLuong;
+          this.total+= nhan.money;
+      }
+      else {
+          System.out.println("Hình như có gì đấy sai sai ");
+      }
+  }
+  public void DanhSach(){
+      for(String value : danhSachSP){
+          System.out.println(value);
+
+      }
+      System.out.println("Tổng tiền phải chi trả là "+this.total);
+  }
 }
